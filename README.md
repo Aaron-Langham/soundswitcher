@@ -5,4 +5,4 @@ Linux script that uses pactl to swap between 2 sound outputs
 - pactl
 
 # Installation
-download the script into your /bin/ directory (or /usr/bin/)
+Download the script into your /bin/ directory (or /usr/bin/)
