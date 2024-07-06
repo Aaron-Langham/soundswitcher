@@ -1,5 +1,8 @@
 # soundswitcher
-Linux script that uses pactl to swap between 2 sound outputs
+Linux script that uses pactl to swap between sound outputs
+
+```soundswitcher``` is for swapping between 2 devices
+```soundswitcher-3``` is for rotating through 3 devices
 
 # Requirements
 - pactl
