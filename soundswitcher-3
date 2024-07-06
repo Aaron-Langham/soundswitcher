@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Get the names of the first three audio sinks
+DEV1_NAME=$(pactl list sinks short | awk 'NR==1 {print $2}')
+DEV2_NAME=$(pactl list sinks short | awk 'NR==2 {print $2}')
+DEV3_NAME=$(pactl list sinks short | awk 'NR==3 {print $2}')
+
+# Get the current default sink
+CURRENT_SINK=$(pactl get-default-sink)
+
+# Function to switch to the next sink
+switch_sink() {
+    if [ "$CURRENT_SINK" = "$DEV1_NAME" ]; then
+        pactl set-default-sink "$DEV2_NAME"
+        echo "Switched to $DEV2_NAME"
+    elif [ "$CURRENT_SINK" = "$DEV2_NAME" ]; then
+        pactl set-default-sink "$DEV3_NAME"
+        echo "Switched to $DEV3_NAME"
+    else
+        pactl set-default-sink "$DEV1_NAME"
+        echo "Switched to $DEV1_NAME"
+    fi
+}
+
+# Print current status
+echo "Current default sink: $CURRENT_SINK"
+echo "Available sinks: $DEV1_NAME, $DEV2_NAME, $DEV3_NAME"
+
+# Switch to the next sink
+switch_sink
